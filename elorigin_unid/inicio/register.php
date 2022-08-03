@@ -8,10 +8,11 @@
 <body>
 <center>
    <h1>REGISTRAR USUARIO</h1>
-<form action="functionRe.php" method="POST">
+   <a href="../index_user.php"><h3>Regresar a menú inicial</h3></a>
+<form action="register_validation.php" method="POST">
 
 <div class="elem">
-  <input type="text" placeholder="Nombre Completo" name="names"/>
+  <input type="text" placeholder="Nombre de usuario" name="names"/>
 </div>
 
 <div class="elem">

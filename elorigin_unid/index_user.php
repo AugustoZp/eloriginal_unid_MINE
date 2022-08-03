@@ -1,4 +1,5 @@
 <?php
+//CREA UNA SESIÓN NUEVA//
 session_start();
 if(isset($_SESSION['user'])){
    header("Location:inicio/base.php");
@@ -14,7 +15,7 @@ if(isset($_SESSION['user'])){
 </head>
 <body>
    <center>
-   <h1>Bienvenido</h1>
+   <h1>BIENVENIDO</h1>
    <div class="elem">
     <h3><a href="inicio/login.php">INICIA SESIÓN AQUÍ</a></h3>
    </div>

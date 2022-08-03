@@ -1,8 +1,10 @@
 <?php
 require_once("../lib/functions.php");
 
+//CREA UNA SESIÓN NUEVA//
 session_start();
 
+//VERIFICA QUE LA SESIÓN ESTÉ INICIADA//
 if(!isset($_SESSION['user'])){
     echo '<script>
     alert("Por favor debe iniciar sesión para continuar");
@@ -11,6 +13,7 @@ if(!isset($_SESSION['user'])){
     session_destroy();
     die();
 }
+
 $id = $_GET['id'];
 $resultado = get_userselect($connect, $id);
 $users = mysqli_fetch_array($resultado);
@@ -26,7 +29,7 @@ $users = mysqli_fetch_array($resultado);
 </head>
 
 <body>
-    <center><h1>Editar datos de usuario</h1></center>
+    <center><h1>Editar datos de usuario</h1> <a href="../index_user.php"><h3>Regresar a base</h3></a></center>
 <center>
 
         <form action="update_query.php" method="POST">
@@ -43,9 +46,16 @@ $users = mysqli_fetch_array($resultado);
               </div>
 
               <div class="elem">
-              <br><label for="status">status:</label><br><br>
+              <br><label for="password">Password:</label><br><br>
+                <input type="text" name="password" value="<?php echo $users['password']; ?>"/>
+              </div>
+
+              <div class="elem">
+              <br><label for="status">Status:</label><br><br>
                 <input type="text" name="status" value="<?php echo $users['status']; ?>"/>
               </div>
+
+
 
               <br><br>
               <button type="submit" name="submit">ACTUALIZAR DATOS</button>

@@ -9,7 +9,8 @@
 <body>
 <center>
    <h1>INICIO DE SESIÓN</h1>
-<form action="functionLo.php" method="POST">
+   <a href="../index_user.php"><h3>Regresar a menú inicial</h3></a>
+<form action="login_validation.php" method="POST">
 
 <div class="elem">
   <input type="text" placeholder="Correo electrónico" name="email"/>

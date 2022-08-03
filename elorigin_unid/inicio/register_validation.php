@@ -1,7 +1,6 @@
 <?php 
 require_once("../lib/connect.php");
 
-
 $names = $_POST['names'];
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -18,7 +17,7 @@ if(mysqli_num_rows($verify) >0 ){
     exit();
 }
 
-//REGISTRANDO NUEVO USUARIO//
+//REGISTRA NUEVO USUARIO DESPÚES DE HABER VALIDADO//
 $resultado = mysqli_query($connect, $consulta);
 if($resultado){
     echo '<script>

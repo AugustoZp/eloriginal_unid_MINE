@@ -3,7 +3,7 @@ require_once("connect.php");
 
 //FUNCIÓN DE ALL USERS//
 function get_all_users($connect){
-$consulta="SELECT * FROM users";
+$consulta="SELECT id , names , email , password FROM users";
 $resultado = mysqli_query($connect, $consulta);
 return $resultado;
 }
@@ -24,9 +24,9 @@ function delete_user($id){
     }
 
 //FUNCIÓN DE ACTUALIZAR USUARIO//
-Function update_user($names, $email, $status, $id){
+Function update_user($names, $email, $password, $status, $id){
     global $connect;
-    $consulta= "UPDATE users SET names='$names', email='$email', status='$status' WHERE  id = $id";
+    $consulta= "UPDATE users SET names='$names', email='$email', password='$password', status='$status' WHERE  id = $id";
     $resultado = mysqli_query($connect, $consulta);
     return $resultado;
 }
