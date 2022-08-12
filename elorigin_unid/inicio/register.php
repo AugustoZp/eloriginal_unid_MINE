@@ -8,7 +8,7 @@
 <body>
 <center>
    <h1>REGISTRAR USUARIO</h1>
-   <a href="../index_user.php"><h3>Regresar a menú inicial</h3></a>
+
 <form action="register_validation.php" method="POST">
 
 <div class="elem">
@@ -28,6 +28,10 @@
 <button type="submit" name="submit">Registrarse</button>
 
 </form>
+
+<div class="elem">
+<h3><a href="login.php">VOLVER A LOGIN</a></h3>
+   </div>
 </center>
 </body>
 </html>

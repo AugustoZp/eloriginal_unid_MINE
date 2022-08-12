@@ -4,5 +4,5 @@
 
 //DESTRUYE LA SESIÓN//
     session_destroy();
-    header("Location: ../index_user.php");
+    header("Location: login.php");
 ?>

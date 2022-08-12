@@ -9,7 +9,7 @@
 <body>
 <center>
    <h1>INICIO DE SESIÓN</h1>
-   <a href="../index_user.php"><h3>Regresar a menú inicial</h3></a>
+   
 <form action="login_validation.php" method="POST">
 
 <div class="elem">
@@ -23,8 +23,11 @@
 
 <br><br>
 <button type="submit" name="submit">Acceder</button>
-
 </form>
+<br>
+<div class="elem">
+<h3>¿Aún no estás registrado? <a href="register.php">REGISTRATE AQUÍ</a></h3>
+   </div>
 </center>
 </body>
 </html>

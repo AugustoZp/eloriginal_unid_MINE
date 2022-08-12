@@ -10,24 +10,20 @@ $consulta = "INSERT INTO users(names,email,password) VALUES ('$names','$email','
 //VERIFICA QUE EL CORREO NO SE REPITA EN EL REGISTRO//
 $verify = mysqli_query($connect, "SELECT * FROM users WHERE email='$email' ");
 if(mysqli_num_rows($verify) >0 ){
-    echo '<script>
-    alert("Este correo ya está registrado, introduce uno distinto");
-    window.location="register.php";
-    </script>';
+    echo '<center><h3>Este correo ya está registrado, introduce uno distinto<br>
+    <a href="register.php">Reintentar</a></h3></center>';
     exit();
 }
 
 //REGISTRA NUEVO USUARIO DESPÚES DE HABER VALIDADO//
 $resultado = mysqli_query($connect, $consulta);
 if($resultado){
-    echo '<script>
-    alert("Usuario registrado exitosamente");
-    window.location="../index_user.php";
-    </script>';
+    echo '<center><h3>Usuario registrado exitosamente<br>
+    <a href="login.php">Inicia sesión</a></h3></center>';
+
 }else{
-    echo '<script>
-    alert("Ha ocurrido un error al momento de registrarse");
-    window.location="register.php";
-    </script>';
+    echo '<center><h3>Ha ocurrido un error al momento de registrarse<br>
+    <a href="register.php">Reintentar</a></h3></center>';
+    exit();
 }
 ?>

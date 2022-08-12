@@ -3,7 +3,7 @@ require_once("connect.php");
 
 //FUNCIÓN DE ALL USERS//
 function get_all_users($connect){
-$consulta="SELECT id , names , email , password FROM users";
+$consulta="SELECT id , names , email FROM users";
 $resultado = mysqli_query($connect, $consulta);
 return $resultado;
 }
@@ -30,5 +30,36 @@ Function update_user($names, $email, $password, $status, $id){
     $resultado = mysqli_query($connect, $consulta);
     return $resultado;
 }
+
+function login_mem(){
+session_start();
+if(!isset($_SESSION['user'])){
+    echo '<center><h3>Por favor debe iniciar sesión para continuar<br>
+    <a href="login.php">Inicia sesión</a></h3></center>';
+    session_destroy();
+    die();
+}
+}
+
+function get_user_desc($connect){
+    $consulta="SELECT * FROM users ORDER BY names DESC";
+    $resultado = mysqli_query($connect, $consulta);
+    return $resultado; 
+}
+
+function get_user_asc($connect){
+    $consulta="SELECT * FROM users ORDER BY names ASC";
+    $resultado = mysqli_query($connect, $consulta);
+    return $resultado; 
+}
+
+
+function get_filter_user($connect, $where){
+    $consulta="SELECT id , names , email , password FROM users WHERE names= " .$where;
+    $resultado = mysqli_query($connect, $consulta);
+    return $resultado;
+    }
+
+
 
 ?>
