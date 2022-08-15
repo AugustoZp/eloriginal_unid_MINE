@@ -2,11 +2,12 @@
 require_once("../lib/functions.php");
 //CREA UNA SESIÓN NUEVA//
 $_SESSION = login_mem();
-
 $users = get_all_users($connect);
 $user_desc = get_user_desc($connect);
 $user_asc = get_user_asc($connect);
-error_reporting(0);
+get_search($connect);
+$search = $_GET['search'];
+error_reporting (0);
 ?>
 
 <!DOCTYPE html>
@@ -19,42 +20,30 @@ error_reporting(0);
 </head>
 <body>
 <center> 
-    <select name="filter" id="filter">
-        <option value="zamudio">zamudio</option>
-    </select>
-<table>
-        <thead>
-            <tr>
-                <h2>REGISTRO DE USUARIOS</h2>
-                <div class="elem">
-                <form action=""  method="post">
-                     <select name="orden" id="orden">
-                     <option value="0">--> Selecciona una opción</option>
-                     <option value="1">Ordenar A-Z</option>
-                     <option value="2">Ordenar Z-A</option>
-                     </select>
-                  <button type="submit">Ordenar</button>
-                </form>
-                </div>
 
-                <br>
-                <th>id</th>
-                <th>Nombres</th>
-                <th>Correo electrónico</th>
-            </tr>
-        </thead>
-        <?php $orden = $_POST['orden']; ?>
-<?php if ($orden == 0): 
- $userszeta = $users; 
- elseif ($orden == 1):            
- $userszeta = $user_asc; 
- elseif ($orden == 2): 
- $userszeta = $user_desc;
- endif; ?>
+                <h2>REGISTRO DE USUARIOS</h2>
+<div class="elem">
+<table>
+<thead>
+
+    <form action="search_filter.php" method="get">
+    <input type="text" name="search" placeholder="Filtrar búsqueda (id, nombres, correo electrónico)" value="<?php echo $search; ?>">
+    <button type="submit">Buscar</button>
+    </form> 
+    <br>
+</div>
+         <th>id</th>
+         <th>Nombres</th>
+         <th>Correo electrónico</th>
+         <br>
+</thead>
+
         <tbody>
             <?php
-            while($fila = mysqli_fetch_array($userszeta))
-            {
+            $query=mysqli_query($connect,"SELECT id, names, email FROM users WHERE(id LIKE '%$search%' OR names LIKE '%$search%' OR email LIKE '%$search%')");
+            $result=mysqli_num_rows($query);
+            if($result>0){
+            while($fila = mysqli_fetch_array($query)){
             ?>
             <tr>
                 <td><?php echo $fila['id']?></td>
@@ -66,6 +55,7 @@ error_reporting(0);
                 <td><a href=delete.php?id=<?php echo $fila['id'] ?>>Eliminar usuario</a></td>
             </tr>
             <?php
+            }
             }
             ?>
 

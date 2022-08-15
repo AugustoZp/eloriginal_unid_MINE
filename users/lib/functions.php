@@ -31,6 +31,7 @@ Function update_user($names, $email, $password, $status, $id){
     return $resultado;
 }
 
+//FUNCIÓN DE INICIO DE SESIÓN//
 function login_mem(){
 session_start();
 if(!isset($_SESSION['user'])){
@@ -41,25 +42,40 @@ if(!isset($_SESSION['user'])){
 }
 }
 
+//FUNCIÓN DE ORDEN DE NOMBRE DESCENDENTE//
 function get_user_desc($connect){
     $consulta="SELECT * FROM users ORDER BY names DESC";
     $resultado = mysqli_query($connect, $consulta);
     return $resultado; 
 }
 
+//FUNCIÓN DE ORDEN DE NOMBRE ASCENDENTE//
 function get_user_asc($connect){
     $consulta="SELECT * FROM users ORDER BY names ASC";
     $resultado = mysqli_query($connect, $consulta);
     return $resultado; 
 }
 
-
-function get_filter_user($connect, $where){
-    $consulta="SELECT id , names , email , password FROM users WHERE names= " .$where;
+//FUNCIÓN DE ORDEN DE EMAIL DESCENDENTE//
+function get_email_desc($connect){
+    $consulta="SELECT * FROM users ORDER BY email DESC";
     $resultado = mysqli_query($connect, $consulta);
-    return $resultado;
+    return $resultado; 
+}
+
+//FUNCIÓN DE ORDEN DE EMAIL ASCENDENTE//
+function get_email_asc($connect){
+    $consulta="SELECT * FROM users ORDER BY email ASC";
+    $resultado = mysqli_query($connect, $consulta);
+    return $resultado; 
+}
+
+//FUNCIÓN DE FILTRADO DE BÚSQUEDA//
+    function get_search($connect){
+        $search = strtolower($_REQUEST['search']);
+        if(empty($search))
+        {
+            header('location:base.php');
+        }
     }
-
-
-
 ?>
